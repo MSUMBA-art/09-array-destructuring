@@ -12,55 +12,65 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  order: function (starterIndex, mainIndex) {
-  return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
-}
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
 
-  // openingHours: {
-  //   thu: {
-  //     open: 12,
-  //     close: 22,
-  //   },
-  //   fri: {
-  //     open: 11,
-  //     close: 23,
-  //   },
-  //   sat: {
-  //     open: 0, // Open 24 hours
-  //     close: 24,
-  //   },
-  // },
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = "20:00", address }) {
+    console.log(`Order received ${this.starterMenu[starterIndex]} and ${this.categories[mainIndex]} will be delivered to ${address} at ${time}`);
+  },
 };
 
-let [main, , secondary] = restaurant.categories;
-console.log(main, secondary);
+restaurant.orderDelivery({
+  time: '22:30',
+  address: '14A 4th Ave, Retreat',
+  mainIndex: 2,
+  starterIndex: 2,
+});
 
-// switching variables 
-// const temp = main
+restaurant.orderDelivery({
+  address: '14A 4th Ave, Retreat',
+  starterIndex: 1
+});
 
-// main = secondary
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
 
-// secondary = temp
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
 
-// console.log(main, secondary);
+// Default values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
 
-[main, secondary] = [secondary, main]
+// Mutating variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+({ a, b } = obj);
+console.log(a, b);
 
-console.log(main, secondary);
-
-
-// receive 2 return values from a function 
-const [stater, mainCourse] = restaurant.order(2, 0)
-console.log(stater, mainCourse);
-
-//nested destructuring
-const nested = [2, 4, [5, 6]];
-// const [i, , j] = nested
-
-const [i, , [j, k]] = nested
-console.log(i, j, k);
-
-// default values  
-const [p = 1, q = 1, r = 1] = [8, 9]
-
-console.log(p, q, r);
+// Nested objects
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c);

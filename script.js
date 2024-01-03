@@ -52,22 +52,56 @@ const restaurant = {
   },
 };
 
+const rest1 = {
+  name: "Capricorn",
+  // numGuests: 20,
+  numGuests: 0,
+};
 
-restaurant.numGuests = 0;
-const guests= restaurant.numGuests || 10;
-console.log(guests);
+const rest2 = {
+  name: 'Retreat',
+  owner: "Alexander Msumba",
+};
+
+// OR assignment operator
+// rest1.numGuests = rest1.numGuests || 10
+// rest2.numGuests = rest2.numGuests || 10;
+
+// rest1.numGuests ||= 10
+// rest1.numGuests ||= 10
+
+rest1.numGuests ??= 10;
+rest1.numGuests ??= 10;
+
+// AND  assignment operator
+//rest1.owner = rest1.owner && "<ANONYMOUS>";
+//rest2.owner = rest2.owner && '<ANONYMOUS>';
+
+rest1.owner &&= '<ANONYMOUS>';
+rest2.owner &&= '<ANONYMOUS>';
+
+
+
+
+console.log(rest1);
+console.log(rest2);
+
+
+// restaurant.numGuests = 0;
+// const guests= restaurant.numGuests || 10;
+// console.log(guests);
 
 // Nullish  : null and undefined (NOT 0 or "")
-const guestCorrect = restaurant.numGuests ?? 10;
-console.log(guestCorrect);
+// const guestCorrect = restaurant.numGuests ?? 10;
+// console.log(guestCorrect);
 
-console.log('=== OR ===');
+// console.log('=== OR ===');
 // use ANY data typeof, return ANY data typeof, short-circuiting
-console.log(3 || 'Alex');
-console.log('' || 'Alex');
-console.log(true || 0);
-console.log(undefined || null);
-console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+// console.log(3 || 'Alex');
+// console.log('' || 'Alex');
+// console.log(true || 0);
+// console.log(undefined || null);
+// console.log(undefined || 0 || '' || 'Hello' || 23 || null);
 
 // restaurant.numGuests = 0;
 // const guest1 = restaurant.numGuests ? restaurant.numGuests : 10;
@@ -76,21 +110,21 @@ console.log(undefined || 0 || '' || 'Hello' || 23 || null);
 // const guest2 = restaurant.numGuests || 10;
 // console.log(guest2);
 
-console.log('=== AND ===');
-console.log(0 && 'Alex');
-console.log(1 && 'Alex');
-console.log('IRENE' && 99 && null && 'Alex');
+// console.log('=== AND ===');
+// console.log(0 && 'Alex');
+// console.log(1 && 'Alex');
+// console.log('IRENE' && 99 && null && 'Alex');
 
 // Practical Example
-if (restaurant.orderPizza) {
-  restaurant.orderPizza('mushroom', 'spinach');
-}
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza('mushroom', 'spinach');
+// }
 
-restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
+// restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
 
 // 1 DESTRUCTURING
 //SPREAD, because is on RIGHT side of =
-const arr = [1, 2, ...[3, 4]];
+// const arr = [1, 2, ...[3, 4]];
 
 // REST, because is on LEFT side of =
 // const [a, b, ...others] = [1, 2, 3, 4, 5];
